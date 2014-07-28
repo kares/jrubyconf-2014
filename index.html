@@ -1,0 +1,504 @@
+<!DOCTYPE HTML>
+<!--[if IE 6]>
+<html id="ie6" lang="en-US" class="ie ie6 lt-ie9">
+<![endif]-->
+<!--[if IE 7]>
+<html id="ie7" lang="en-US" class="ie ie7 lt-ie9">
+<![endif]-->
+<!--[if IE 8]>
+<html id="ie8" lang="en-US" class="ie ie8 lt-ie9">
+<![endif]-->
+<!--[if gte IE 9]>
+<html lang="en-US" class="ie ie9">
+<![endif]-->
+<!--[if !(IE)]><!-->
+<html lang="en-US" class="">
+<!--<![endif]-->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0 minimal-ui">
+	<meta name="author" content="Karol Bucek">
+
+	<meta property="og:title" content="JRuby (on Rails) Knacks">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://kares.github.io/jrubyconf-2014">
+	<meta property="og:image" content="http://flowtime-js.marcolago.com/assets/img/share-image.jpg">
+	<meta property="og:site_name" content="kares.org">
+
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:url" content="http://kares.github.io/jrubyconf-2014"> <!-- TODO link? -->
+	<meta name="twitter:title" content="JRuby (on Rails) Knacks">
+    
+    <!-- TODO review desc -->
+	<meta name="twitter:description" content="We're look at some of the few 'little' obstacles that have existed and/or still exist when doing JRuby on Rails. These can easily surprise us especially when running in a truly multi-threaded (production) environment. Should be useful for practicing JRuby-ists as well as 'raw' Ruby-ists.">
+    <!--
+	<meta name="twitter:image" content="http://flowtime-js.marcolago.com/assets/img/share-image.jpg">-->
+	<meta name="twitter:creator" content="@kbucek">
+
+    <!-- TODO review desc -->
+	<meta name="description" content="We're look at some of the few 'little' obstacles that have existed and/or still exist when doing JRuby on Rails. These can easily surprise us especially when running in a truly multi-threaded (production) environment. Should be useful for practicing JRuby-ists as well as 'raw' Ruby-ists.">
+
+	<title>JRuby (on Rails) Knacks</title>
+    
+    <link href="assets/img/tack.ico" rel="icon" type="image/x-icon">
+    
+	<link rel="stylesheet" href="assets/css/reset.css">
+	<link rel="stylesheet" href="flowtime/css/flowtime.css">
+	<link rel="stylesheet" href="flowtime/css/themes/default.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+	<!--<link rel="stylesheet" href="assets/css/prism.css">-->
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    
+    <link rel="apple-touch-icon-precomposed" href="assets/img/tack.cube.png">
+    <!--
+	<link rel="apple-touch-icon-precomposed" 						href="img/touch-icon-iphone.png">
+	<link rel="apple-touch-icon-precomposed" 	sizes="72x72" 		href="img/touch-icon-ipad.png">
+	<link rel="apple-touch-icon-precomposed" 	sizes="114x114" 	href="img/touch-icon-iphone-retina.png">
+	<link rel="apple-touch-icon-precomposed" 	sizes="144x144" 	href="img/touch-icon-ipad-retina.png">
+
+	<link rel="apple-touch-startup-image" href="img/startup-640x920.png" media="(device-width: 320px) and (device-height: 480px) and (-webkit-device-pixel-ratio: 2)">
+	<link rel="apple-touch-startup-image" href="img/startup-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
+    -->
+    
+    <script src="https://googledrive.com/host/0BwOK_Peg3kL3X1BqRFJmZmROMjA"><!-- script.min.js --></script>
+    <script src="assets/js/embed-gist.js"><!-- embedGist.js  --></script>
+    
+</head>
+<body class="">
+
+	<div class="flowtime">
+        
+		<div class="ft-section" data-id="section-1">
+            
+			<div id="/section-1/page-1" class="ft-page" data-id="page-1" data-title="by @kares">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <div class="responsive" style="display: inline-block;">
+						  <a href="http://jruby.org" target="_blank"><img class="responsive jruby" src="assets/img/jruby.png"></a>
+                          <a href="http://rubyonrails.org" target="_blank"><img class="responsive rails" src="assets/img/rails.png"></a>
+                          <a href="http://kares.github.io/jrubyconf-2014"><img class="responsive tacks" src="assets/img/tack2.png"></a>
+                        </div>
+                        
+                        <p class=""><h2>JRuby (on Rails) Tacks</h2></p>
+                        <p class="ft-fragment step">http://kares.github.io/jrubyconf-2014</p>
+                        <p class="ft-fragment step"><strong>Down Key</strong> or <strong>Swipe Up</strong></p>
+                        
+                        <!--
+				        <h1>Overview Mode.</h1>
+				        <p>You can look at the entire presentation by pressing <strong>ESC Key</strong>.<br>
+					       When in Overview Mode you can go back to the Page Mode by pressing again the ESC Key.
+                        </p>-->
+                    
+					</div>
+				</div>
+			</div>
+            
+			<div class="ft-page" data-id="page-2">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1>What is it, Precious?</h1>
+                        <p>... what does 'J' stand for in <b>JRuby</b> ?</p>
+                        <ul>
+                           <li class="ft-fragment step"><del>JVM, Java, JIT</del> Ruby</li>
+                           <li class="ft-fragment step"><del>Jep, Jo, Juppie</del> Ruby</li>
+                           <li class="ft-fragment step"><del>Japan, Jumbo, J.hovah's</del> Ruby</li>
+                        </ul>
+                    </div>
+                </div>
+			</div>
+    
+            <div class="ft-page" data-id="page-3" data-title="It's Just Ruby!">
+				<div class="stack-center bg-jruby-2k8">
+					<div class="stacked-center">
+                        <h1 class="ft-fragment img-header">It's Just Ruby!</h1>
+                        <h2 class="ft-fragment img-sub-header">
+                            <a href="https://vimeo.com/100538993" target="_blank">EuRuKo 2008 (Prague)</a>
+                        </h2>
+                    </div>
+                </div>
+			</div>
+    
+            <div class="ft-page" data-id="page-4" data-title="EuRuKo 2008 - It's Just Ruby!">
+				<div class="stack-center bg-just_ruby-2k8">
+					<div class="stacked-center">
+                        <!-- EuRuKo 2008 Slide "Just Ruby" -->
+                    </div>
+                </div>
+			</div>
+        
+            <div class="ft-page" data-id="page-5" data-title="EuRuKo 2008 - JRuby 1.1">
+				<div class="stack-center bg-jruby11-2k8">
+					<div class="stacked-center">
+                        <!-- EuRuKo 2008 Slide "JRuby 1.1" -->
+                    </div>
+                </div>
+			</div>
+        
+			<div id="/section-1/page-6" class="ft-page" data-id="page-6">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1>The 'J' Letter</h1>
+                        <p>we've come a long way (since)</p>
+                        <ul>
+                           <li class="ft-fragment step">Java was terrifying (just watch the talk)</li>
+                           <li class="ft-fragment step">JRuby ("massively") helped the change ...</li>
+                            
+                           <li class="ft-fragment step">we're NOT deploying JRuby apps on the JVM!</li>
+                           <li class="ft-fragment step">but Ruby apps that are JRuby compatible (JK)</li>
+                            
+                           <li class="ft-fragment step">share your J(Ruby) story ... so others now</li>
+                        </ul>
+                    </div>
+                </div>
+			</div>
+        
+		</div>
+    
+        <!-- SECTION 2 -->
+    
+		<div class="ft-section" data-id="section-2">
+            
+			<div class="ft-page" data-id="page-1">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1>Keep it MRI Compatible</h1>
+                        <p>it will pay off (and not just due faster tests)</p>
+                        <ul>
+                           <li class="ft-fragment step">promotes abstraction from 3rd party APIs</li>
+                           <li class="ft-fragment step">for simple APIs just re-implement or stub it</li>
+                           <li class="ft-fragment step">seems like a waste of time (as with tests)</li>
+                           <li class="ft-fragment step">... you will thank yourself later</li>
+                        </ul>
+                    
+					</div>
+				</div>
+			</div>
+    
+			<div class="ft-page" data-id="page-2" data-title="MRI Compatibility (sample)">
+				<div class="stack-center">
+					<div class="stacked-center gist-wrapper">
+                        <script>embedGist('https://gist.github.com/kares/974fda3b6a4233e6d8f7.js')</script>
+                        <p>
+                           <a href="https://github.com/hparra/ruby-serialport/" target="_blank">serialport</a> gem's 
+                           <a href="http://rubydoc.info/gems/serialport/SerialPort" target="_blank">API</a> - simple to re-implement
+                        </p>
+					</div>
+				</div>
+			</div>
+            
+        </div>
+    
+        <!-- SECTION 3 -->
+    
+		<div class="ft-section" data-id="section-3">
+            
+			<div class="ft-page" data-id="page-1">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1>Do not start Threads</h1>
+                        <p>on your own unless you absolutely must</p>
+                        <ul>
+                           <li class="ft-fragment step">request/server performance will suffer as load increases</li>
+                           <li class="ft-fragment step">if you must start a simple async task use a 
+                               <a href="https://github.com/ruby-concurrency/concurrent-ruby/wiki/Thread%20Pools#fixedthreadpool">thread pool</a>
+                           </li>
+                           <li class="ft-fragment step">if a 3rd party gem does <code>Thread.new</code> you better deal with it</li>
+                           <li class="ft-fragment step">exceptions e.g. web-sockets (usually server's job)</li>
+                           <li class="ft-fragment step">starting daemon threads on boot is 'ok' (has consequences)</li>
+                        </ul>
+                    
+					</div>
+				</div>
+			</div>
+    
+			<div class="ft-page" data-id="page-2" data-title="Do not start Threads (sample)">
+				<div class="stack-center">
+					<div class="stacked-center gist-wrapper">
+                        <!-- GIST -->
+                        <script>embedGist('https://gist.github.com/kares/b08842beb8c34ee6900a.js')</script>
+                        <p>
+                           a (simplified) <a href="https://github.com/rails/rails/blob/3e006d5076a393c827fb/actionpack/lib/action_controller/metal/live.rb#L212-L251">
+                           piece</a> of <code>ActionController::Live::Response</code>
+                        </p>
+					</div>
+				</div>
+			</div>
+            
+			<div class="ft-page" data-id="page-2" data-title="NOTE">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h2>p.s. impossible to "support"</h2>
+                        <p>although I would have done the same</p>
+                        <p class="ft-fragment step">as there's no "official" rack <code>env['async.callback']</code> support</p>
+					</div>
+				</div>
+			</div>
+            
+        </div>
+    
+        <!-- SECTION 4 -->
+    
+		<div class="ft-section" data-id="section-4">
+            
+			<div class="ft-page" data-id="page-1">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1><code>Rails.logger</code> ain't thread-safe</h1>
+                        <p>silencing the logger is <a href="http://log.kares.org/2011/04/railslogger-is-not-threadsafe.html" target="_blank">still</a> 
+                           not thread-safe (and likely never will be)</p>
+                        <ul>
+                           <li class="ft-fragment step">default logger might raise it's level and you won't see log entries</li>
+                           <li class="ft-fragment step">esp. true on JRuby but can be reproduced on MRI as well (e.g. using Puma)</li>
+                            
+                           <li class="ft-fragment step"><code>Rails.logger.silencer</code> is on by default (on production)</li>
+                        </ul>
+					</div>
+				</div>
+			</div>
+            
+			<div class="ft-page" data-id="page-2" data-title="Rails.logger.silencer code">
+				<div class="stack-center">
+					<div class="stacked-center gist-wrapper">
+                        <!-- GIST -->
+                        <script>embedGist('https://gist.github.com/kares/f36321642de6463f640d.js')</script>
+                        <p>
+                           on 4.x 
+                           <a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/lib/active_support/logger_silence.rb" target="_blank">this</a> 
+                           gets included 
+                           <a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/lib/active_support/logger.rb" target="_blank">into</a> 
+                           <code>ActiveSupport::Logger</code>
+                        </p>
+					</div>
+				</div>
+			</div>
+            
+			<div class="ft-page" data-id="page-3">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1><code>Rails.logger</code> ain't thread-safe</h1>
+                        <ul>
+                           <li class="ft-fragment step">this (is an old) "feature" that dates back to Rails 
+                              <a href="https://github.com/rails/rails/blob/2-3-stable/activesupport/lib/active_support/buffered_logger.rb#L24-L36" target="_blank">2.3</a>
+                           </li>
+                           <li class="ft-fragment step">been reported/discussed several times - still the same code persists</li>
+                           <li class="ft-fragment step">interestingly <code>logger.silence</code> got 
+                               <a href="https://github.com/rails/rails/blob/3-2-stable/activesupport/lib/active_support/buffered_logger.rb#L42" target="_blank">deprecated</a>
+                               on 3.2
+                           </li>
+                           <li class="ft-fragment step">just to be <a href="https://github.com/rails/rails/commit/f914454f3af46a011d2e" target="_blank">re-introduces</a> 
+                               as a re-usable mixin on 4.x :)</li>
+                        </ul>
+					</div>
+				</div>
+			</div>
+            
+			<div class="ft-page" data-id="page-4" data-title="fixing silencer(s)">
+				<div class="stack-center">
+					<div class="stacked-center gist-wrapper">
+                        <!-- GIST -->
+                        <script>embedGist('https://gist.github.com/kares/b5dec3c5597c05a3538a.js')</script>
+                        <p>assumes 4.x ... but similar <a href="https://gist.github.com/kares/9374772" target="_blank">code</a> 
+                           works for old Rails as well
+                        </p>
+                        <ul>
+                           <li class="ft-fragment step">other gems might create custom "logger" classes</li>
+                           <li class="ft-fragment step">... there's more 
+                           <a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/lib/active_support/core_ext/kernel/reporting.rb#L44" target="_blank">things</a> 
+                               that do not need silencing!
+                            </li>
+                        </ul>
+					</div>
+				</div>
+			</div>
+            
+        </div>
+
+        <!-- SECTION 5 -->
+    
+		<div class="ft-section" data-id="section-5">
+            
+			<div class="ft-page" data-id="page-1">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1>ActiveRecord Pooling</h1>
+                        <p>(concurrency) issues, issues, issues ... until recently</p>
+                        <ul>
+                           <li class="ft-fragment step">
+                               <a href="https://github.com/rails/rails/commit/ff97e9d029d6164fa2e9">"forcibly"</a> 
+                               (no way to avoid) 
+                               <a href="https://github.com/rails/rails/commit/6edaa267174dfedaf5b1">introduced</a> in Rails 2.2 - <b>2008</b> yay :)
+                           </li>
+                           <li class="ft-fragment step">amazing for starters but took quite a long time to "smooth" it out</li>
+                           <li class="ft-fragment step">old Rails (2.3) had issues with (sometimes) sharing a connection</li>
+                           <li class="ft-fragment step">Rails 3.2 did a lot of improvements - still a lot of <code>synchronized</code></li>
+                           <li class="ft-fragment step">in <b>2012</b> @thedarkone steps 
+                               <a href="https://github.com/rails/rails/commit/45448a578877f6a7534">in</a> with improvements (end up in 4.0)</li>
+                           <li class="ft-fragment step">if you must start a simple async task use a 
+                               <a href="https://github.com/ruby-concurrency/concurrent-ruby/wiki/Thread%20Pools#fixedthreadpool">thread pool</a>
+                           </li>
+                        </ul>
+                    
+					</div>
+				</div>
+			</div>
+    
+			<div class="ft-page" data-id="page-2" data-title="Do not start Threads (sample)">
+				<div class="stack-center">
+					<div class="stacked-center gist-wrapper">
+                        <h1>ActiveRecord Pooling</h1>
+                        <script>embedGist('https://gist.github.com/kares/b08842beb8c34ee6900a.js')</script>
+                        <p>
+                           a (simplified) <a href="https://github.com/rails/rails/blob/3e006d5076a393c827fb/actionpack/lib/action_controller/metal/live.rb#L212-L251">
+                           piece</a> of <code>ActionController::Live::Response</code>
+                        </p>
+					</div>
+				</div>
+			</div>
+            
+			<div class="ft-page" data-id="page-3" data-title="ActiveRecord Pooling">
+				<div class="stack-center">
+					<div class="stacked-center gist-wrapper">
+                        <!-- GIST -->
+                        <script>embedGist('https://gist.github.com/kares/b08842beb8c34ee6900a.js')</script>
+                        <p>
+                           a (simplified) <a href="https://github.com/rails/rails/blob/3e006d5076a393c827fb/actionpack/lib/action_controller/metal/live.rb#L212-L251">
+                           piece</a> of <code>ActionController::Live::Response</code>
+                        </p>
+					</div>
+				</div>
+			</div>
+            
+        </div>
+
+		<div class="ft-section" data-id="section-6">
+			<div id="/section-8/page-2" class="ft-page" data-id="page-1">
+				<h1>Thank You!</h1>
+				<p>Designed and coded by Marco Lago<br>
+					Interaction/Experience/Game/Designer/Developer</p>
+				<p>You can find me on Twitter as <a href="https://twitter.com/marcolago" target="_blank">@marcolago</a></p>
+				<p>If you like this work spread the word, you know how ;)</p>
+				<h2>have fun ... deploying JRuby (on Rails)</h2>
+			</div>
+		</div>
+
+        <!--
+
+		<div class="ft-section" data-id="section-4">
+			<div id="/section-4/page-1" class="ft-page" data-id="page-1">
+				<h1>Default HTML Structures</h1>
+				<p>Flowtime.js comes with a default theme that styles the most common HTML structures, like:</p>
+				<h1>1<sup>st</sup> Level Heading</h1>
+				<h2>2<sup>nd</sup> Level Heading</h2>
+				<h3>3<sup>rd</sup> Level Heading</h3>
+				<h4>4<sup>th</sup>, 5<sup>th</sup> and 6<sup>th</sup> Level Heading</h4>
+			</div>
+		</div>
+
+		<div class="ft-section" data-id="section-5">
+			<div id="/section-5/page-1" class="ft-page" data-id="page-1">
+				<h1>Image Management</h1>
+				<p>Images are fluid like all the other content.</p>
+				<p>You can insert images in the flow or stack images ones on top the others with a minimal markup overhead to create some fancy fragments tricks.</p>
+				<p>Go to the next pages to see fluid images in action and how stacked images can be managed, both in the flow or centered in the slide.<br>
+					Look at the source code to learn how to write the markup.</p>
+			</div>
+			<div id="/section-5/page-2" class="ft-page" data-id="page-2" data-title="Fluid Images">
+				<a href="http://www.genereavventura.com" target="_blank"><img src="assets/img/genereavventura.jpg"></a>
+			</div>
+			<div id="/section-5/page-3" class="ft-page" data-id="page-3">
+				<h1>Stacked Images</h1>
+				<div class="stack">
+					<div class="stacked"><img src="assets/img/mi1-stacked-0.png"></div>
+					<div class="ft-fragment stacked"><img src="assets/img/mi1-stacked-1.png"></div>
+					<div class="ft-fragment stacked"><img src="assets/img/mi1-stacked-2.png"></div>
+					<div class="ft-fragment stacked"><img src="assets/img/mi1-stacked-3.png"></div>
+					<div class="ft-fragment stacked"><img src="assets/img/mi1-stacked-4.png"></div>
+					<div class="ft-fragment stacked"><img src="assets/img/mi1-stacked-5.png"></div>
+					<div class="ft-fragment stacked"><img src="assets/img/mi1-stacked-6.png"></div>
+				</div>
+			</div>
+			<div id="/section-5/page-4" class="ft-page" data-id="page-4">
+				<div class="stack-center">
+					<h1 class="stacked-center">Centered Stacked Images</h1>
+				</div>
+				<div class="ft-fragment stack-center"><img class="stacked-center" src="assets/img/mi2-concept-art.jpg"></div>
+				<div class="ft-fragment stack-center"><img class="stacked-center" src="assets/img/mi2-original.jpg"></div>
+				<div class="ft-fragment stack-center"><img class="stacked-center" src="assets/img/mi2-special-edition.jpg"></div>
+			</div>
+			<div id="/section-5/page-5" class="ft-page" data-id="page-5">
+				<div class="stack-center">
+					<div class="stacked-center">
+						<h1>About the Centered Stack</h1>
+						<p class="ft-fragment">You can center anything, not only images!</p>
+						<p class="ft-fragment">Just like this content.<br>Useful for splash pages and titles.</p>
+						<p class="ft-fragment">And you are not limited to stacks, you can center what you want.</p>
+					</div>
+				</div>
+			</div>
+		</div>-->
+
+	</div>
+
+	<script src="flowtime/js/brav1toolbox.js"></script>
+	<script src="flowtime/js/flowtime.js"></script>
+        
+    <!--<script src="assets/js/prism.js"></script>-->
+
+	<script type="text/javascript">
+		var cacheTitle = document.title.replace("Flowtime.js | ", "");
+		var _gaq = _gaq || [];
+        // TODO setup analytics ?!
+		_gaq.push(['_setAccount', 'UA-1228618-10']);
+		_gaq.push(['_trackPageview']);
+		_gaq.push(['_trackEvent', 'Flowtime', 'Landing', document.title]);
+		(function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		//ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		//var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+
+		// Configuration API test
+		Flowtime.showProgress(true);
+		// Flowtime.fragmentsOnSide(true);
+		// Flowtime.fragmentsOnBack(true);
+		// Flowtime.useHistory(false);
+		// Flowtime.slideInPx(true);
+		// Flowtime.sectionsSlideToTop(true);
+		// Flowtime.gridNavigation(false);
+		// Flowtime.useOverviewVariant(true);
+		Flowtime.parallaxInPx(true);
+		//
+		// event management
+		// Flowtime.addEventListener("flowtimenavigation", onNavigation, false);
+		Flowtime.onNavigation(onNavigation);
+        
+		function onNavigation(e)
+		{
+			_gaq.push(['_trackEvent', 'Flowtime', 'Navigation', cacheTitle + ' > ' + document.title.replace("Flowtime.js | ", "")]);
+			// console.log(cacheTitle + ' > ' + document.title.replace("Flowtime.js | ", ""));
+			cacheTitle = document.title.replace("Flowtime.js | ", "");
+			//console.log('section', e.section, 'sectionIndex', e.sectionIndex);
+			//console.log('page', e.page, 'pageIndex', e.);
+			//console.log('pastSectionIndex', e.pastSectionIndex, 'pastPageIndex', e.pastPageIndex);
+			//console.log('prevSection', e.prevSection);
+			//console.log('nextSection', e.nextSection);
+			//console.log('prevPage', e.prevPage);
+			//console.log('nextPage', e.nextPage);
+			//console.log('fragment', e.fragment, + 'fragmentIndex', e.fragmentIndex);
+			//console.log("isOverview", e.isOverview);
+			//console.log('progress:', e.progress, 'total:', e.total);
+			// var value = Math.round(e.progress * 100 / e.total);
+			// console.log('Completion: ' + value + '%');
+		}
+        
+		// starts the application with configuration options
+		Flowtime.start();
+	</script>
+    
+    <!-- TODO SlideMote ?! -->
+    <!--
+	<script type="text/javascript" src="http://slidemote.jit.su/slidemote.js#flowtime"></script>-->
+    
+</body>
+</html>
