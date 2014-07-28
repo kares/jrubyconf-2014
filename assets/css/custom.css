@@ -1,3 +1,10 @@
+body {
+    /*
+    background: url('../img/body.jpg') repeat scroll;
+    background-color: #333333; */
+    /* font-family: "adelle",georgia,serif; */
+}
+
 /* a:link, a:visited { color: #f57700; } */
 
 .flowtime a,
@@ -6,11 +13,22 @@
 .flowtime a:hover,
 .flowtime a:active,
 .flowtime a:focus {
-    color: #f57700;
+    color: #F97953; /* color: #f57700; */
+}
+
+.flowtime .ft-page h1, .flowtime .ft-page .header {
+    color: #F97953;
+}
+
+.flowtime .ft-page h2, .flowtime .ft-page .sub-header {
+    color: #848484;
 }
 
 .responsive {
     max-width : 100%; height: auto;
+}
+.title-wrapper {
+    max-height: 500px;
 }
 img.responsive {
     width : 100%; height: auto;
@@ -18,6 +36,12 @@ img.responsive {
 
 img.jruby, img.rails, img.tacks {
     max-width: 200px;
+}
+
+.warn { color: #B33A3A; }
+.underline { text-decoration: underline; }
+.foot-note, .flowtime .foot-note { 
+    font-size: 120%;
 }
 
 .bg-jruby-2k8 {
@@ -35,7 +59,13 @@ img.jruby, img.rails, img.tacks {
     background: url(../img/jruby11-2k8.jpg) center no-repeat;
     background-size: 1200px 750px;
 }
-
+.bg-bogacs {
+    background: url(../img/bogacs.jpg) center no-repeat;
+    background-size: auto 800px;
+}
+.bg-bogacs .img-header {
+    margin-top: 65%;
+}
 
 .gist-wrapper {
 }
@@ -69,9 +99,14 @@ pre code {
 }
 code {
     color: #CDA869; /* #FFFFFF; */
-    /* font-family: Monospace; */
+    font-family: inherit !important;
     /* font-size: 1.3em; */
     /* font-weight: bolder; */
+}
+
+.flowtime code {
+    font-family: inherit;
+    font-weight: lighter;
 }
 
 .gist { text-shadow: none; }
