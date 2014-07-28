@@ -61,8 +61,10 @@
 	<link rel="apple-touch-startup-image" href="img/startup-640x1096.png" media="(device-width: 320px) and (device-height: 568px) and (-webkit-device-pixel-ratio: 2)">
     -->
     
-    <script src="https://googledrive.com/host/0BwOK_Peg3kL3X1BqRFJmZmROMjA"><!-- script.min.js --></script>
-    <script src="assets/js/embed-gist.js"><!-- embedGist.js  --></script>
+    <!--
+    <script src="https://googledrive.com/host/0BwOK_Peg3kL3X1BqRFJmZmROMjA"><!-- script.min.js --></script>-->
+    <script src="assets/js/script.min.js"><!-- script.min.js --></script>
+    <script src="assets/js/embed-gist.js"><!-- embed-gist.js --></script>
     
 </head>
 <body class="">
@@ -71,17 +73,17 @@
         
 		<div class="ft-section" data-id="section-1">
             
-			<div id="/section-1/page-1" class="ft-page" data-id="page-1" data-title="by @kares">
+			<div id="/section-1/page-1" class="ft-page" data-id="page-1" data-title="JRuby (on Rails) Tacks">
 				<div class="stack-center">
 					<div class="stacked-center">
-                        <div class="responsive" style="display: inline-block;">
-						  <a href="http://jruby.org" target="_blank"><img class="responsive jruby" src="assets/img/jruby.png"></a>
-                          <a href="http://rubyonrails.org" target="_blank"><img class="responsive rails" src="assets/img/rails.png"></a>
-                          <a href="http://kares.github.io/jrubyconf-2014"><img class="responsive tacks" src="assets/img/tack2.png"></a>
+                        <div class="responsive title-wrapper" style="display: inline-block;">
+						  <a href="http://jruby.org" target="_blank" title="JRuby"><img class="responsive jruby" src="assets/img/jruby.png"></a>
+                          <a href="http://rubyonrails.org" target="_blank" title="(on Rails)"><img class="responsive rails" src="assets/img/rails.png"></a>
+                          <a href="http://kares.github.io/jrubyconf-2014" title="Knacks"><img class="responsive tacks" src="assets/img/tack2.png"></a> <!-- TODO link -->
                         </div>
                         
-                        <p class=""><h2>JRuby (on Rails) Tacks</h2></p>
-                        <p class="ft-fragment step">http://kares.github.io/jrubyconf-2014</p>
+                        <h2>JRuby (on Rails) <del>Tacks</del> Knacks</h2>
+                        <p class="ft-fragment"><span class="underline">http://kares.github.io/jrubyconf-2014</span></p> <!-- TODO link -->
                         <p class="ft-fragment step"><strong>Down Key</strong> or <strong>Swipe Up</strong></p>
                         
                         <!--
@@ -141,13 +143,13 @@
                         <h1>The 'J' Letter</h1>
                         <p>we've come a long way (since)</p>
                         <ul>
-                           <li class="ft-fragment step">Java was terrifying (just watch the talk)</li>
-                           <li class="ft-fragment step">JRuby ("massively") helped the change ...</li>
+                           <li class="ft-fragment step">Java was really "terrifying" (just watch the talk)</li>
+                           <li class="ft-fragment step">JRuby (massively) helped the Java != JVM transition</li>
                             
                            <li class="ft-fragment step">we're NOT deploying JRuby apps on the JVM!</li>
                            <li class="ft-fragment step">but Ruby apps that are JRuby compatible (JK)</li>
                             
-                           <li class="ft-fragment step">share your J(Ruby) story ... so others now</li>
+                           <li class="ft-fragment step">please share your J(Ruby) stories ... so others now</li>
                         </ul>
                     </div>
                 </div>
@@ -199,15 +201,14 @@
                         <h1>Do not start Threads</h1>
                         <p>on your own unless you absolutely must</p>
                         <ul>
-                           <li class="ft-fragment step">request/server performance will suffer as load increases</li>
-                           <li class="ft-fragment step">if you must start a simple async task use a 
-                               <a href="https://github.com/ruby-concurrency/concurrent-ruby/wiki/Thread%20Pools#fixedthreadpool">thread pool</a>
-                           </li>
-                           <li class="ft-fragment step">if a 3rd party gem does <code>Thread.new</code> you better deal with it</li>
-                           <li class="ft-fragment step">exceptions e.g. web-sockets (usually server's job)</li>
-                           <li class="ft-fragment step">starting daemon threads on boot is 'ok' (has consequences)</li>
+                          <li class="ft-fragment step">request/server performance will suffer as load increases</li>
+                          <li class="ft-fragment step">if you must start a simple async task use a 
+                            <a href="https://github.com/ruby-concurrency/concurrent-ruby/wiki/Thread%20Pools#fixedthreadpool" target="_blank">thread pool</a>
+                          </li>
+                          <li class="ft-fragment step">if a 3rd party gem does <code>Thread.new</code> you better deal with it</li>
+                          <li class="ft-fragment step">recent exception: web-sockets (but should be a server's job)</li>
+                          <li class="ft-fragment step">starting daemon threads on boot is 'fine' (has consequences)</li>
                         </ul>
-                    
 					</div>
 				</div>
 			</div>
@@ -218,8 +219,9 @@
                         <!-- GIST -->
                         <script>embedGist('https://gist.github.com/kares/b08842beb8c34ee6900a.js')</script>
                         <p>
-                           a (simplified) <a href="https://github.com/rails/rails/blob/3e006d5076a393c827fb/actionpack/lib/action_controller/metal/live.rb#L212-L251">
-                           piece</a> of <code>ActionController::Live::Response</code>
+                          a (simplified) 
+                          <a href="https://github.com/rails/rails/blob/3e006d5076a393c827fb/actionpack/lib/action_controller/metal/live.rb#L212-L251" target="_blank">piece</a>
+                          of <code>ActionController::Live::Response</code>
                         </p>
 					</div>
 				</div>
@@ -228,8 +230,8 @@
 			<div class="ft-page" data-id="page-2" data-title="NOTE">
 				<div class="stack-center">
 					<div class="stacked-center">
-                        <h2>p.s. impossible to "support"</h2>
-                        <p>although I would have done the same</p>
+                        <h2>"hard" to integrate with an async-capable server</h2>
+                        <p>... although most of us would have done the same</p>
                         <p class="ft-fragment step">as there's no "official" rack <code>env['async.callback']</code> support</p>
 					</div>
 				</div>
@@ -245,13 +247,14 @@
 				<div class="stack-center">
 					<div class="stacked-center">
                         <h1><code>Rails.logger</code> ain't thread-safe</h1>
-                        <p>silencing the logger is <a href="http://log.kares.org/2011/04/railslogger-is-not-threadsafe.html" target="_blank">still</a> 
-                           not thread-safe (and likely never will be)</p>
+                        <p>
+                          silencing the logger is <a href="http://log.kares.org/2011/04/railslogger-is-not-threadsafe.html" target="_blank">still</a> 
+                          not thread-safe (and maybe never will be)</p>
                         <ul>
-                           <li class="ft-fragment step">default logger might raise it's level and you won't see log entries</li>
-                           <li class="ft-fragment step">esp. true on JRuby but can be reproduced on MRI as well (e.g. using Puma)</li>
+                          <li class="ft-fragment step">default logger might raise it's level and you won't see log entries</li>
+                          <li class="ft-fragment step">esp. true on JRuby but can be reproduced on MRI as well (e.g. using Puma)</li>
                             
-                           <li class="ft-fragment step"><code>Rails.logger.silencer</code> is on by default (on production)</li>
+                          <li class="ft-fragment step"><code>Rails.logger.silencer</code> is on by default (even on production)</li>
                         </ul>
 					</div>
 				</div>
@@ -263,11 +266,11 @@
                         <!-- GIST -->
                         <script>embedGist('https://gist.github.com/kares/f36321642de6463f640d.js')</script>
                         <p>
-                           on 4.x 
-                           <a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/lib/active_support/logger_silence.rb" target="_blank">this</a> 
-                           gets included 
-                           <a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/lib/active_support/logger.rb" target="_blank">into</a> 
-                           <code>ActiveSupport::Logger</code>
+                          on 4.x 
+                          <a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/lib/active_support/logger_silence.rb" target="_blank">this</a> 
+                          gets included 
+                          <a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/lib/active_support/logger.rb" target="_blank">into</a> 
+                          <code>ActiveSupport::Logger</code>
                         </p>
 					</div>
 				</div>
@@ -278,16 +281,18 @@
 					<div class="stacked-center">
                         <h1><code>Rails.logger</code> ain't thread-safe</h1>
                         <ul>
-                           <li class="ft-fragment step">this (is an old) "feature" that dates back to Rails 
-                              <a href="https://github.com/rails/rails/blob/2-3-stable/activesupport/lib/active_support/buffered_logger.rb#L24-L36" target="_blank">2.3</a>
-                           </li>
-                           <li class="ft-fragment step">been reported/discussed several times - still the same code persists</li>
-                           <li class="ft-fragment step">interestingly <code>logger.silence</code> got 
-                               <a href="https://github.com/rails/rails/blob/3-2-stable/activesupport/lib/active_support/buffered_logger.rb#L42" target="_blank">deprecated</a>
-                               on 3.2
-                           </li>
-                           <li class="ft-fragment step">just to be <a href="https://github.com/rails/rails/commit/f914454f3af46a011d2e" target="_blank">re-introduces</a> 
-                               as a re-usable mixin on 4.x :)</li>
+                          <li class="ft-fragment step">this (is an old) "feature" that dates back to Rails 
+                            <a href="https://github.com/rails/rails/blob/2-3-stable/activesupport/lib/active_support/buffered_logger.rb#L24-L36" target="_blank">2.3</a>
+                          </li>
+                          <li class="ft-fragment step">been reported/discussed/changed several times - same code persists</li>
+                          <li class="ft-fragment step">interestingly <code>logger.silence</code> got 
+                            <a href="https://github.com/rails/rails/blob/3-2-stable/activesupport/lib/active_support/buffered_logger.rb#L42" target="_blank">deprecated</a>
+                            on 3.2 (to be removed later)
+                          </li>
+                          <li class="ft-fragment step">
+                            but got <a href="https://github.com/rails/rails/commit/f914454f3af46a011d2e" target="_blank">re-introduces</a> 
+                            as a re-usable mixin on 4.0 for all loggers :)
+                          </li>
                         </ul>
 					</div>
 				</div>
@@ -298,15 +303,17 @@
 					<div class="stacked-center gist-wrapper">
                         <!-- GIST -->
                         <script>embedGist('https://gist.github.com/kares/b5dec3c5597c05a3538a.js')</script>
-                        <p>assumes 4.x ... but similar <a href="https://gist.github.com/kares/9374772" target="_blank">code</a> 
-                           works for old Rails as well
+                        <p>
+                          assumes 4.x ... but similar <a href="https://gist.github.com/kares/9374772" target="_blank">code</a> 
+                          works for old Rails as well
                         </p>
                         <ul>
-                           <li class="ft-fragment step">other gems might create custom "logger" classes</li>
-                           <li class="ft-fragment step">... there's more 
-                           <a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/lib/active_support/core_ext/kernel/reporting.rb#L44" target="_blank">things</a> 
-                               that do not need silencing!
-                            </li>
+                          <li class="ft-fragment step">other gems might create custom "logger" classes</li>
+                          <li class="ft-fragment step">... there's more 
+                            <a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/lib/active_support/core_ext/kernel/reporting.rb#L44" target="_blank">things</a> 
+                            that are better NOT silenced
+                          </li>
+                          <li class="ft-fragment step">just think twice whenever there's a <code>silence_xxx { ... }</code></li>
                         </ul>
 					</div>
 				</div>
@@ -322,36 +329,47 @@
 				<div class="stack-center">
 					<div class="stacked-center">
                         <h1>ActiveRecord Pooling</h1>
-                        <p>(concurrency) issues, issues, issues ... until recently</p>
+                        <p class="sub-header"><code>ActiveRecord::ConnectionAdapter::ConnectionPool</code></p>
                         <ul>
-                           <li class="ft-fragment step">
-                               <a href="https://github.com/rails/rails/commit/ff97e9d029d6164fa2e9">"forcibly"</a> 
-                               (no way to avoid) 
-                               <a href="https://github.com/rails/rails/commit/6edaa267174dfedaf5b1">introduced</a> in Rails 2.2 - <b>2008</b> yay :)
-                           </li>
-                           <li class="ft-fragment step">amazing for starters but took quite a long time to "smooth" it out</li>
-                           <li class="ft-fragment step">old Rails (2.3) had issues with (sometimes) sharing a connection</li>
-                           <li class="ft-fragment step">Rails 3.2 did a lot of improvements - still a lot of <code>synchronized</code></li>
-                           <li class="ft-fragment step">in <b>2012</b> @thedarkone steps 
-                               <a href="https://github.com/rails/rails/commit/45448a578877f6a7534">in</a> with improvements (end up in 4.0)</li>
-                           <li class="ft-fragment step">if you must start a simple async task use a 
-                               <a href="https://github.com/ruby-concurrency/concurrent-ruby/wiki/Thread%20Pools#fixedthreadpool">thread pool</a>
-                           </li>
+                          <li class="ft-fragment step">
+                            <a href="https://github.com/rails/rails/commit/ff97e9d029d6164fa2e9">"forcibly"</a> (no way to avoid) 
+                            <a href="https://github.com/rails/rails/commit/6edaa267174dfedaf5b1">introduced</a> in Rails 2.2 - <b>2008</b> yay :)
+                          </li>
+                          <li class="ft-fragment step">old ActiveRecord (2.3) had issues with sharing a connection</li>
+                          <li class="ft-fragment step">in 3.2 pool received a lot of attention - still "too" <code>synchronized</code></li>
+                          <li class="ft-fragment step"><b>2012</b> @thedarkone 
+                            <a href="https://github.com/rails/rails/commit/45448a578877f6a7534">starts</a> with improvements (end up in 4.x)
+                          </li>
                         </ul>
-                    
+                        <div class="ft-fragment step">
+                          <p>very appreciated step but took quite some time (4.0) to "smooth" out</p>
+                          <p><b>SUMMARY:</b> lots of (concurrency) issues ... along the way</p>
+                        </div>
 					</div>
 				</div>
 			</div>
     
-			<div class="ft-page" data-id="page-2" data-title="Do not start Threads (sample)">
+			<div class="ft-page" data-id="page-2">
 				<div class="stack-center">
-					<div class="stacked-center gist-wrapper">
+					<div class="stacked-center">
                         <h1>ActiveRecord Pooling</h1>
-                        <script>embedGist('https://gist.github.com/kares/b08842beb8c34ee6900a.js')</script>
-                        <p>
-                           a (simplified) <a href="https://github.com/rails/rails/blob/3e006d5076a393c827fb/actionpack/lib/action_controller/metal/live.rb#L212-L251">
-                           piece</a> of <code>ActionController::Live::Response</code>
-                        </p>
+                        <p class="sub-header">pool might often be the performance bottleneck</p>
+                        <!--
+                        <ul>
+                          <li class="ft-fragment step">
+                            set <code>pool: size</code> really high (>= max concurrent requests) if you can afford it
+                          </li>
+                          <li class="ft-fragment step">consider <code>config.middleware.delete 'ActiveRecord::QueryCache'</code></li>
+                        </ul>-->
+                        <ul>
+                          <li class="ft-fragment step">
+                            first <b>test your server</b> under load (sometimes leads to surprising results)
+                          </li>
+                          <li class="ft-fragment step">
+                            set <code>pool: size</code> high >= <b>100</b> (depending on server's max-requests)
+                          </li>
+                          <li class="ft-fragment step">consider <code>config.middleware.delete 'ActiveRecord::QueryCache'</code></li>
+                        </ul>
 					</div>
 				</div>
 			</div>
@@ -360,27 +378,126 @@
 				<div class="stack-center">
 					<div class="stacked-center gist-wrapper">
                         <!-- GIST -->
-                        <script>embedGist('https://gist.github.com/kares/b08842beb8c34ee6900a.js')</script>
+                        <script>embedGist('https://gist.github.com/kares/6a28455318106328662b.js')</script>
                         <p>
-                           a (simplified) <a href="https://github.com/rails/rails/blob/3e006d5076a393c827fb/actionpack/lib/action_controller/metal/live.rb#L212-L251">
-                           piece</a> of <code>ActionController::Live::Response</code>
+                          this <a href="https://github.com/rails/rails/blob/4-1-stable/activerecord/lib/active_record/query_cache.rb">middleware</a> 
+                          forces each request to check-out a connection
                         </p>
+					</div>
+				</div>
+			</div>
+            
+			<div class="ft-page" data-id="page-4">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1>ActiveRecord Pooling</h1>
+                        <p class="sub-header">what if the pool stands in your way</p>
+                        <ul>
+                          <li class="ft-fragment step">using external pools (not just Java but C pools)</li>
+                          <li class="ft-fragment step">duplicate configuration - 2 pool sizes, checkout timeouts</li>
+                          <li class="ft-fragment step">with AR-JDBC most common case: <code>jndi: jdbc/MyDS</code></li>
+                          <li class="ft-fragment step">maximizing pool performance - fine grained parameter tuning</li>
+                          <li class="ft-fragment step">scaling in a connection limiting environment (e.g. Heroku)</li>  
+                        </ul>
 					</div>
 				</div>
 			</div>
             
         </div>
 
-		<div class="ft-section" data-id="section-6">
-			<div id="/section-8/page-2" class="ft-page" data-id="page-1">
-				<h1>Thank You!</h1>
-				<p>Designed and coded by Marco Lago<br>
-					Interaction/Experience/Game/Designer/Developer</p>
-				<p>You can find me on Twitter as <a href="https://twitter.com/marcolago" target="_blank">@marcolago</a></p>
-				<p>If you like this work spread the word, you know how ;)</p>
-				<h2>have fun ... deploying JRuby (on Rails)</h2>
+        <!-- SECTION 6 -->
+
+        <div class="ft-section" data-id="section-6">
+
+			<div class="ft-page" data-id="page-1" data-title="ActiveRecord Bogacs!">
+				<div class="stack-center bg-bogacs">
+					<div class="stacked-center">
+                        <h1 class="ft-fragment header img-header">ActiveRecord-Bogacs</h1>
+                        <div class="ft-fragment">
+                            <p><b>pooling "hacks" ... in a relaxed 'spa' fashion!</b></p>
+                            <p><a href="https://github.com/kares/activerecord-bogacs" target="_blank">http://github.com/kares/activerecord-bogacs</a></p>
+                        </div>
+					</div>
+				</div>
 			</div>
-		</div>
+            
+			<div class="ft-page" data-id="page-2" data-title="ActiveRecord Bogacs">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1 class="header">ActiveRecord-Bogacs</h1>
+                        <h2><b class="warn">NOTE:</b> if unsure GENTLY REFUSE!</h2>
+                        <p>this is an (early-stage) experiment for now</p>
+					</div>
+				</div>
+			</div>
+            
+			<div class="ft-page" data-id="page-3" data-title="ActiveRecord::Bogacs::FalsePool">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1><code>ActiveRecord::Bogacs::FalsePool</code></h1>
+                        <ul>
+                          <li class="ft-fragment step">does not pool that much (ignores <code>pool: size</code> and similar)</li>
+                          <li class="ft-fragment step">for AR's sanity manages a (non-limited) thread to connection mapping</li>
+                          <li class="ft-fragment step">the underlying connection pool is expected to be configured by the user</li>
+                          <li class="ft-fragment step">should suit JRuby's ActiveRecord <code>jndi: jdbc/MyDS</code> case perfectly</li>
+                          <li class="ft-fragment step">(maybe) start pushing with AR-JDBC 
+                              (sounds like a bad idea for <a href="https://github.com/rails/rails/pull/15585" target="_blank">now</a>)
+                          </li>
+                        </ul>
+					</div>
+				</div>
+			</div>
+            
+			<div class="ft-page" data-id="page-4" data-title="ActiveRecord::Bogacs::DefaultPool">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1><code>ActiveRecord::Bogacs::DefaultPool</code></h1>
+                        <ul>
+                          <li class="ft-fragment step">based on recent AR pool but with an API compatible with older versions</li>
+                          <li class="ft-fragment step">some useful updates related to configuration might be expected</li>
+                          <li class="ft-fragment step">e.g. pool <code>initial: size</code> - very easy to support and quite useful in the cloud</li>
+                          <li class="ft-fragment step">fixing <code>Thread.current.object_id</code> issue with JRuby's thread-backed fibers</li>
+                        </ul>
+					</div>
+				</div>
+			</div>
+            
+			<div class="ft-page" data-id="page-5" data-title="ActiveRecord::Bogacs::ShareablePool">
+				<div class="stack-center">
+					<div class="stacked-center">
+                        <h1><code>ActiveRecord::Bogacs::ShareablePool</code></h1>
+                        <h2><b class="warn">NOTE:</b> the craziest pool - BE VERY TENDER!</h2>
+                        <ul>
+                          <li class="ft-fragment step">allows a database connection to be shared between threads</li>
+                          <li class="ft-fragment step">very <span class="warn">BAD</span> idea except for read-only SQL over a thread-safe connection</li>
+                          <li class="ft-fragment step">a shared block is explicitly marked by using <code>with_shared_connection</code></li>
+                          <li class="ft-fragment step">potential use-case - cold cache warmup for a highly concurrent app</li>
+                        </ul>
+					</div>
+				</div>
+			</div>
+            
+        </div>
+            
+        <!-- SECTION 7 -->
+
+		<div class="ft-section" data-id="section-7">
+            <div class="ft-page" data-id="page-1">
+                <div class="stack-center">
+                    <div class="stacked-center">
+                        <h1>Thank♡</h1>
+                        <br><br>
+                        
+                        <p class="ft-fragment">... and have <a href="https://www.youtube.com/watch?v=uU9_rL3og5c" target="_blank">fun</a> with JRuby (on Rails)</p>
+                        
+                        <br><br>
+                        <p class="foot-note">
+                          hand-(c)rafted for <a href="http://2014.jrubyconf.eu/">JRubyConf</a> 2014 by <a class="kares" href="http://kares.org">http://kares.org</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!--
 
@@ -442,8 +559,9 @@
 
 	<script src="flowtime/js/brav1toolbox.js"></script>
 	<script src="flowtime/js/flowtime.js"></script>
-        
-    <!--<script src="assets/js/prism.js"></script>-->
+
+    <!--
+    <script src="assets/js/prism.js"></script>-->
 
 	<script type="text/javascript">
 		var cacheTitle = document.title.replace("Flowtime.js | ", "");
