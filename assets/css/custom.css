@@ -29,6 +29,7 @@ body {
 }
 .title-wrapper {
     max-height: 500px;
+    display: inline-block;
 }
 img.responsive {
     width : 100%; height: auto;
