@@ -153,13 +153,13 @@
                            <li class="ft-fragment step">Java was really "terrifying" (just watch the talk)</li>
                            <li class="ft-fragment step">JRuby (massively) helped the Java != JVM transition</li>
                            
-                           <li class="ft-fragment step">still a lot of folks ignore the JVM feeling its not for them</li>
+                           <li class="ft-fragment step">still a lot of folks ignore the JVM - "its not for them"</li>
                            <!--
                            <li class="ft-fragment step">we're NOT deploying JRuby apps on the JVM!</li>
                            <li class="ft-fragment step">but Ruby apps that are JRuby compatible (JK)</li>-->
                             
-                           <li class="ft-fragment step">please do <strong>share</strong> your J(Ruby) stories ... so others know</li>
-                           <li class="ft-fragment step">... deploying apps with JRuby is the best thing since 
+                           <li class="ft-fragment step">please do <strong>share</strong> your J(Ruby) stories ...</li>
+                           <li class="ft-fragment step">... deploying with JRuby is the best thing since 
                              <span class="underline" title="Traditional German Bread Rolls">Brötchen</span>
                            </li>
                            
@@ -181,7 +181,7 @@
                         <p>it will pay off (and not just due faster tests)</p>
                         <ul>
                            <li class="ft-fragment step">promotes abstraction from 3rd party APIs</li>
-                           <li class="ft-fragment step">for simple APIs just re-implement or stub it</li>
+                           <li class="ft-fragment step">re-implement or stub simple platform specific APIs</li>
                            <li class="ft-fragment step">seems like a waste of time (as with tests)</li>
                            <li class="ft-fragment step">... you will definitely thank yourself (later)</li>
                         </ul>
@@ -214,14 +214,14 @@
                         <h1>Do not start Threads</h1>
                         <p>on your own unless you absolutely must</p>
                         <ul>
-                          <li class="ft-fragment step">starting (daemon) threads on boot is 'fine'</li>
+                          <li class="ft-fragment step">starting an "occasional" (daemon) thread (on boot) is 'fine'</li>
                           <li class="ft-fragment step">request (server) performance will suffer as load increases</li>
-                          <li class="ft-fragment step">if you must start a simple async task use a 
+                          <li class="ft-fragment step">if you "must" do async tasks from requests use a 
                             <a href="https://github.com/ruby-concurrency/concurrent-ruby/wiki/Thread%20Pools#fixedthreadpool" target="_blank">thread pool</a>
                           </li>
                           <li class="ft-fragment step">if a 3rd party gem does <code>Thread.new</code> you better deal with it</li>
                           <li class="ft-fragment step">... might want to try out: <code>jruby.thread.pool.enabled=true</code></li>
-                          <li class="ft-fragment step">recent exception: web-sockets (still should be the server's job)</li>
+                          <!--<li class="ft-fragment step">recent exception: web-sockets (still should be the server's job)</li>-->
                         </ul>
 					</div>
 				</div>
@@ -241,44 +241,43 @@
 				</div>
 			</div>
             
-			<div class="ft-page" data-id="page-2" data-title="NOTE">
+			<div class="ft-page" data-id="page-3">
 				<div class="stack-center">
 					<div class="stacked-center">
+                        <h1><code>Thread.new</code></h1>
                         <h2>"hard" to integrate with an async-capable server</h2>
-                        <p>... although most of us would have done the same</p>
-                        <p class="ft-fragment step">as there's no "official" rack <code>env['async.callback']</code> support</p>
+                        <p>hide the async nature of the response "under" a middleware</p>
+                        <p class="ft-fragment step">there's (still) no "official" rack <code>env['async.callback']</code> support</p>
 					</div>
 				</div>
 			</div>
             
         </div>
     
-        <!-- BREAK -->
-        <!--
+        <!-- BREAK 4 -->
+
 		<div class="ft-section" data-id="section-4">
             
-			<div class="ft-page" data-id="page-1" data-title="Berlin Break">
-				<div class="stack-center">
+			<div class="ft-page" data-id="page-1" data-title="Potsdam">
+				<div class="stack-center bg-potsdam">
 					<div class="stacked-center">
-                        <h1><code>Rails.logger</code> ain't thread-safe</h1>
-                        <p>
-                          silencing the logger is <a href="http://log.kares.org/2011/04/railslogger-is-not-threadsafe.html" target="_blank">still</a> 
-                          not thread-safe (and maybe never will be)</p>
-                        <ul>
-                          <li class="ft-fragment step">default logger might raise it's level and you won't see log entries</li>
-                          <li class="ft-fragment step">esp. true on JRuby but can be reproduced on MRI as well (e.g. using Puma)</li>
-                            
-                          <li class="ft-fragment step"><code>Rails.logger.silencer</code> is on by default (even on production)</li>
-                        </ul>
+                        <h1><a href="http://en.wikipedia.org/wiki/Brandenburg" target="_blank">Potsdam</a></h1>
+                        <!--
+                        <p class="dark">
+                          - the capital of Brandenburg
+                          - one of the sixteen federal-states of Germany
+                          - (Berlin is not a capital of any federal state)
+                        </p>-->
+                        <!-- bg: Einsteinturm in the Albert Einstein Science Park -->
 					</div>
 				</div>
 			</div>
-            
-        </div>-->
+        
+        </div>
 
-        <!-- SECTION 4 -->
+        <!-- SECTION 5 -->
     
-		<div class="ft-section" data-id="section-4">
+		<div class="ft-section" data-id="section-5">
             
 			<div class="ft-page" data-id="page-1">
 				<div class="stack-center">
@@ -324,7 +323,7 @@
                           <li class="ft-fragment step">been reported/discussed/changed several times - same code persists</li>
                           <li class="ft-fragment step">interestingly <code>logger.silence</code> got 
                             <a href="https://github.com/rails/rails/blob/3-2-stable/activesupport/lib/active_support/buffered_logger.rb#L42" target="_blank">deprecated</a>
-                            on 3.2 (to be removed later)
+                            on 3.2 (for removal)
                           </li>
                           <li class="ft-fragment step">
                             but got <a href="https://github.com/rails/rails/commit/f914454f3af46a011d2e" target="_blank">re-introduces</a> 
@@ -345,12 +344,13 @@
                           works for old Rails as well
                         </p>
                         <ul>
-                          <li class="ft-fragment step">other gems might create custom "logger" classes</li>
+                          <li class="ft-fragment step">be aware if gems create and use "custom" loggers</li>
                           <li class="ft-fragment step">... there's more 
                             <a href="https://github.com/rails/rails/blob/4-1-stable/activesupport/lib/active_support/core_ext/kernel/reporting.rb#L44" target="_blank">things</a> 
                             that are better NOT silenced
                           </li>
                           <li class="ft-fragment step">just think twice whenever there's a <code>silence_xxx { ... }</code></li>
+                          <li class="ft-fragment step">even if Rails does not <code>silence</code> or <code>silence_stream</code>, gems might!</li>
                         </ul>
 					</div>
 				</div>
@@ -358,9 +358,9 @@
             
         </div>
 
-        <!-- SECTION 5 -->
+        <!-- SECTION 6 -->
     
-		<div class="ft-section" data-id="section-5">
+		<div class="ft-section" data-id="section-6">
             
 			<div class="ft-page" data-id="page-1">
 				<div class="stack-center">
@@ -372,7 +372,7 @@
                             <a href="https://github.com/rails/rails/commit/ff97e9d029d6164fa2e9">"forcibly"</a> (no way to avoid) 
                             <a href="https://github.com/rails/rails/commit/6edaa267174dfedaf5b1">introduced</a> in Rails 2.2 - <b>2008</b> yay :)
                           </li>
-                          <li class="ft-fragment step">old ActiveRecord (2.3) had issues with sharing a connection</li>
+                          <li class="ft-fragment step">old ActiveRecord (2.3) had issues with "leaking" a connection</li>
                           <li class="ft-fragment step">in 3.2 pool received a lot of attention - still "too" <code>synchronized</code></li>
                           <li class="ft-fragment step"><b>2012</b> @thedarkone 
                             <a href="https://github.com/rails/rails/commit/45448a578877f6a7534">starts</a> with improvements (end up in 4.x)
@@ -442,9 +442,9 @@
             
         </div>
 
-        <!-- SECTION 6 -->
+        <!-- SECTION 7 -->
 
-        <div class="ft-section" data-id="section-6">
+        <div class="ft-section" data-id="section-7">
 
 			<div class="ft-page" data-id="page-1" data-title="ActiveRecord Bogacs!">
 				<div class="stack-center bg-bogacs">
@@ -490,7 +490,7 @@
 					<div class="stacked-center">
                         <h1><code>ActiveRecord::Bogacs::DefaultPool</code></h1>
                         <ul>
-                          <li class="ft-fragment step">based on recent AR pool but with an API compatible with older versions</li>
+                          <li class="ft-fragment step">based on recent AR pool but with an API compatible for older versions</li>
                           <li class="ft-fragment step">some useful updates related to configuration might be expected</li>
                           <li class="ft-fragment step">e.g. pool <code>initial: size</code> - very easy to support and quite useful in the cloud</li>
                           <li class="ft-fragment step">fixing <code>Thread.current.object_id</code> issue with JRuby's thread-backed fibers</li>
@@ -503,11 +503,11 @@
 				<div class="stack-center">
 					<div class="stacked-center">
                         <h1><code>ActiveRecord::Bogacs::ShareablePool</code></h1>
-                        <h2><b class="warn">NOTE:</b> the craziest pool - BE VERY TENDER!</h2>
+                        <h2><b class="warn">NOTE:</b> the craziest thing - BE VERY TENDER!</h2>
                         <ul>
                           <li class="ft-fragment step">allows a database connection to be shared between threads</li>
                           <li class="ft-fragment step">very <span class="warn">BAD</span> idea except for read-only SQL over a thread-safe connection</li>
-                          <li class="ft-fragment step">a shared block is explicitly marked, by using <code>with_shared_connection</code></li>
+                          <li class="ft-fragment step">a shared block is explicitly marked - using <code>with_shared_connection</code></li>
                           <li class="ft-fragment step">potential use-case - cold cache warmup for a highly concurrent app</li>
                         </ul>
 					</div>
@@ -515,14 +515,33 @@
 			</div>
             
         </div>
-            
-        <!-- SECTION 7 -->
 
-		<div class="ft-section" data-id="section-7">
+        <!-- SECTION 8 -->
+
+		<div class="ft-section" data-id="section-8">
             <div class="ft-page" data-id="page-1">
                 <div class="stack-center">
                     <div class="stacked-center">
-                        <h1>Thank♡</h1>
+                        <h1 title="Wrap Up">Wrap IT Up</h1>
+                        
+                        <ul>
+                          <li class="ft-fragment step">abstract away from Ruby platform specifics and keep it MRI compatible</li>
+                          <li class="ft-fragment step">do not start threads on your own (during requests) - check your gems if they do</li>
+                          <li class="ft-fragment step">double check your logger - make sure you have predictable logging on production</li>
+                          <li class="ft-fragment step">understand your concurrency requirements and adjust your pools accordingly</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECTION 9 -->
+
+		<div class="ft-section" data-id="section-9">
+            <div class="ft-page" data-id="page-1">
+                <div class="stack-center">
+                    <div class="stacked-center">
+                        <h1 title="Danke schön!">Danke sch♡n!</h1>
                         <br><br>
                         
                         <p class="ft-fragment">... and have <a href="https://www.youtube.com/watch?v=uU9_rL3og5c" target="_blank">fun</a> with JRuby (on Rails)</p>
