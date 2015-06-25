@@ -42,7 +42,7 @@ img.jruby, img.rails, img.tacks {
 
 .warn { color: #B33A3A; }
 .underline { text-decoration: underline; }
-.foot-note, .flowtime .foot-note { 
+.foot-note, .flowtime .foot-note {
     font-size: 120%;
 }
 
@@ -126,64 +126,113 @@ code {
 .gist .gist-render iframe { width: 100%; }
 .gist .gist-file.gist-render { border: medium none; }
 .gist .gist-file {
--moz-border-bottom-colors: none;
--moz-border-left-colors: none;
--moz-border-right-colors: none;
--moz-border-top-colors: none;
-border-color: #DDDDDD #DDDDDD #CCCCCC; border-image: none;
-/* border-radius: 3px 3px 3px 3px; */
-border-style: solid; border-width: 1px;
-/* margin-bottom: 1em; */
-
-font-family: Consolas, "Liberation Mono", Courier, monospace; /*-- */
-    
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #DDDDDD #DDDDDD #CCCCCC; border-image: none;
+    /* border-radius: 3px 3px 3px 3px; */
+    border-style: solid; border-width: 1px;
+    /* margin-bottom: 1em; */
+    font-family: Consolas, "Liberation Mono", Courier, monospace; /*-- */
 }
+
 .gist .gist-file .gist-data {
-overflow: auto;
-word-wrap: normal;
+    overflow: auto;
+    word-wrap: normal;
 }
 .gist .gist-file .gist-meta {
-font-size: 85%; overflow:hidden;
-padding:.5em; /* padding: 10px; */
-color: /* #999999; */ #CCCCCC; background-color: /* #E8E8E8; */ #000000;
+    font-size: 85%; overflow:hidden;
+    padding:.5em; /* padding: 10px; */
+    color: /* #999999; */ #CCCCCC; background-color: /* #E8E8E8; */ #000000;
 }
 .gist .gist-file .gist-meta a {
-text-decoration: none; color: /* #666666; */ #F57700; /* font-weight: bold; */
+    text-decoration: none; color: /* #666666; */ #F57700; /* font-weight: bold; */
 }
 .gist .gist-file .gist-meta a:visited { color: /* #737; */ #F57700; }
 .gist .gist-file .gist-data {
-background-color: /* #f8f8ff; */ #141414;
-border-bottom: 1px solid #ddd;
-font-size: 100%; overflow:auto; word-wrap:normal;
+    background-color: /* #f8f8ff; */ #141414;
+    border-bottom: 1px solid #ddd;
+    font-size: 100%; overflow:auto; word-wrap:normal;
 }
 .gist .gist-file .gist-data pre,
-.gist .gist-file .gist-data .line-pre {
-    
-/*-- font-family: 'Bitstream Vera Sans Mono','Consolas','Liberation Mono','Courier', monospace; */
-font-family: Consolas, "Liberation Mono", Courier, monospace; /*-- */
-    
-background: none repeat scroll 0 0 transparent !important;
-margin: 0 !important; border: none !important;
-padding: .1em .15em .15em .15em !important; /* padding: 0 !important; */
+.gist /* .gist-file .gist-data */ .line-pre {
+    font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace !important;
+    font-size: 100%;
+
+    background: none repeat scroll 0 0 transparent !important;
+    margin: 0 !important; border: none !important;
+    padding: .1em .15em .15em .15em !important; /* padding: 0 !important; */
 }
 .gist .gist-file.scroll .gist-data {
-bottom: 30px; left: 0; right: 0; top: 0;
-position: absolute; overflow: scroll;
+    bottom: 30px; left: 0; right: 0; top: 0;
+    position: absolute; overflow: scroll;
 }
 .gist .gist-file.scroll .gist-meta {
-bottom: 0; left: 0; right: 0; position: absolute;
+    bottom: 0; left: 0; right: 0; position: absolute;
 }
 .gist .gist-file .gist-data .gist-highlight {
-background: none repeat scroll 0 0 transparent !important;
+    background: none repeat scroll 0 0 transparent !important;
 }
 .gist .gist-file .gist-data .gist-line-numbers,
-.gist .gist-file .gist-data .line_numbers { display: none; }
-.gist .gist-file .gist-data .line-numbers { padding: 0.5em; text-align: right; }
+.gist .gist-file .gist-data .line_numbers { display: none }
+.gist .gist-file .gist-data .line-numbers { padding: 0.5em; text-align: right }
 .gist .gist-file .gist-data .gist-line-numbers span, /* seems no longer needed ?! */
 .gist .gist-file .gist-data .line-numbers .line-number { clear:right; display:block }
 .gist .gist-file .gist-data .gist-line-data, /* */
-.gist .gist-file .gist-data .line_data { padding: 0.5em !important; overflow: hidden; }
+.gist /* .gist-file .gist-data */ .line_data { padding: 0.5em !important; overflow: hidden }
+.gist pre, .gist code { font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace; white-space: pre }
+
+.gist .pl-c { /* color: #969896 */ color: #969896 /* #999988; */ }
+.gist .pl-c1,
+.gist .pl-mdh,
+.gist .pl-mm,
+.gist .pl-mp,
+.gist .pl-mr,
+.gist .pl-s1 .pl-v,
+.gist .pl-s3,
+.gist .pl-sc,
+.gist .pl-sv { /* color: #0086b3 */ color: #008080; }
+.gist .pl-e,
+.gist .pl-en { /* color: #795da3 */ color: #9B703F; }
+.gist .pl-s1 .pl-s2,
+.gist .pl-smi,
+.gist .pl-smp,
+.gist .pl-stj,
+.gist .pl-vo,
+.gist .pl-vpf { /* color: #333 */ color: /* #8F9D6A; */ #CDA869; }
+.gist .pl-ent { color: #63a35c }
+.gist .pl-k,
+.gist .pl-s,
+.gist .pl-st { /* color: #a71d5d */ color: #CF6A4C; /* font-weight: bold */ }
+.gist .pl-pds,
+.gist .pl-s1,
+.gist .pl-s1 .pl-pse .pl-s2,
+.gist .pl-sr,
+.gist .pl-sr .pl-cce,
+.gist .pl-sr .pl-sra,
+.gist .pl-sr .pl-sre,
+.gist .pl-src { /* color: #df5000 */ color: #8F9D6A; }
+.gist .pl-mo,
+.gist .pl-v { /* color: #1d3e81 */ color: #7587A6; }
+.gist .pl-id { color: #b52a1d }
+.gist .pl-ii { background-color: #b52a1d; color: #f8f8f8 }
+.gist .pl-sr .pl-cce { color: #63a35c; font-weight: bold }
+.gist .pl-ml { color: #693a17 }
+.gist .pl-mh,
+.gist .pl-mh .pl-en,
+.gist .pl-ms { /* color: #1d3e81; */ color: #445588; font-weight: bold }
+.gist .pl-mq { color: #008080 }
+.gist .pl-mi { /* color: #333; */ color: #8F9D6A; font-style: italic }
+.gist .pl-mb { /* color: #333; */ color: #8F9D6A; font-weight: bold }
+.gist .pl-md,
+.gist .pl-mdhf { background-color: #ffecec; color: #bd2c00 }
+.gist .pl-mdht,
+.gist .pl-mi1 { background-color: #eaffea; color: #55a532 }
+.gist .pl-mdr { color: #795da3; font-weight: bold }
+
 .gist div { padding: 0; margin: 0; line-height: 1.0em } /* */
+
 .gist-syntax  { background: none repeat scroll 0 0 #FFFFFF; }
 .gist-syntax .c { color: #999988; font-style: italic } /* Comment */
 .gist-syntax .err { color: #a61717; background-color: #e3d2d2 } /* Error */
